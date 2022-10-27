@@ -24,11 +24,11 @@ class ViewController: UIViewController {
         
         //Casting -> as? & as!
         if let newName = storedName as? String {
-            nameLabel.text = newName
+            nameLabel.text = "Name: \(newName)"
         }
         
-        if let newbirthday = storedBirthday as? String {
-            birthdayLabel.text = newbirthday
+        if let newBirthday = storedBirthday as? String {
+            birthdayLabel.text = "Birthday: \(newBirthday)"
         }
         
     }
@@ -44,6 +44,28 @@ class ViewController: UIViewController {
         birthdayLabel.text = "Birthday : \(birthdayText.text!)"
         
     }
+    
+    
+    @IBAction func dellButton(_ sender: Any) {
+        
+        let storedName = UserDefaults.standard.object(forKey: "name")
+        let storedBirthday = UserDefaults.standard.object(forKey: "birthday")
+        
+        // "" & nil
+        
+        if (storedName as? String) != nil {
+            UserDefaults.standard.removeObject(forKey: "name")
+            nameLabel.text = "Name: "
+        }
+        
+        if (storedBirthday as? String) != nil {
+            UserDefaults.standard.removeObject(forKey: "birthday")
+            birthdayLabel.text = "Birthday: "
+        }
+ 
+    }
+    
+    
     
 
 }
